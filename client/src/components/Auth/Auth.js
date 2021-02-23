@@ -8,6 +8,7 @@ import {
     Typography,
     Container,
 } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -17,6 +18,7 @@ import { signin, signup } from '../../actions/auth';
 import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
 import Input from './Input';
+import { useSelector, connect } from 'react-redux';
 
 const initialState = {
     firstName: '',
@@ -26,7 +28,7 @@ const initialState = {
     confirmPassword: '',
 };
 
-const SignUp = () => {
+const SignUp = props => {
     const [form, setForm] = useState(initialState);
     const [isSignup, setIsSignup] = useState(false);
     const dispatch = useDispatch();
@@ -81,6 +83,14 @@ const SignUp = () => {
                     {isSignup ? 'Sign up' : 'Sign in'}
                 </Typography>
                 <form className={classes.form} onSubmit={handleSubmit}>
+                    {props.authState &&
+                    props.authState.authData &&
+                    props.authState.authData.message &&
+                    !isSignup ? (
+                        <Alert severity="error" className={classes.errorBox}>
+                            {props.authState.authData.message}
+                        </Alert>
+                    ) : null}
                     <Grid container spacing={2}>
                         {isSignup && (
                             <>
@@ -112,14 +122,6 @@ const SignUp = () => {
                             type={showPassword ? 'text' : 'password'}
                             handleShowPassword={handleShowPassword}
                         />
-                        {isSignup && (
-                            <Input
-                                name="confirmPassword"
-                                label="Repeat Password"
-                                handleChange={handleChange}
-                                type="password"
-                            />
-                        )}
                     </Grid>
                     <Button
                         type="submit"
@@ -164,4 +166,9 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+const mapStateToProps = state => {
+    return {
+        authState: state.auth,
+    };
+};
+export default connect(mapStateToProps)(SignUp);

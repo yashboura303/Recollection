@@ -1,8 +1,12 @@
 import axios from 'axios';
 
-// const API = axios.create({ baseURL: 'http://localhost:5000' });
+// const API = axios.create({
+//     baseURL: 'http://localhost:5000',
+//     validateStatus: status => status === 400 || 404 || 500 || 200,
+// });
 const API = axios.create({
     baseURL: 'https://recollection-project.herokuapp.com/',
+    validateStatus: status => status === 400 || 404 || 500 || 200,
 });
 
 API.interceptors.request.use(req => {
