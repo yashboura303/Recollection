@@ -1,8 +1,10 @@
 # Recollection
 
-![Recollection](https://imgur.com/a/X1aCnoN)
+## Home Page
+<img src="./client/readme-images/home-page.png" width="800">
+&nbsp;
 
-## Introduction
+
 
 
 Setup:
