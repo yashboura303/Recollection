@@ -4,3 +4,25 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
+
+@media only screen and (max-width: 768px) {
+    .makeStyles-appBar-1 {
+        flex-direction: column !important;
+        padding: 10px 15px !important;
+    }
+    .makeStyles-image-3 {
+        display: none !important;
+    }
+    .MuiTypography-h2 {
+        font-size: 2.5rem !important;
+    }
+    .makeStyles-toolbar-4 {
+        padding-top: 10px;
+        font-size: 1rem !important;
+        width: inherit !important;
+    }
+    .MuiAvatar-colorDefault {
+        width: 30px !important;
+        height: 30px !important;
+    }
+}
