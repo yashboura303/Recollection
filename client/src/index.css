@@ -6,23 +6,19 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-    .makeStyles-appBar-1 {
+    header {
         flex-direction: column !important;
-        padding: 10px 15px !important;
+        padding: 10px 20px !important;
     }
-    .makeStyles-image-3 {
+    header img {
         display: none !important;
     }
-    .MuiTypography-h2 {
+    header div:first-child a {
         font-size: 2.5rem !important;
     }
-    .makeStyles-toolbar-4 {
+    header > div:nth-of-type(2) {
         padding-top: 10px;
-        font-size: 1rem !important;
-        width: inherit !important;
-    }
-    .MuiAvatar-colorDefault {
-        width: 30px !important;
-        height: 30px !important;
+        font-size: 1rem;
+        width: inherit;
     }
 }
